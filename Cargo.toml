@@ -15,10 +15,24 @@ edition = "2018"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-bootloader = "0.9.8"
-volatile = "0.2.6"
-spin = "0.5.2"
+bootloader = "0.9.8" #boot image
+volatile = "0.2.6" #avoid delete
+spin = "0.5.2" #lock
+x86_64 = "0.14.2" #exit qemu
+uart_16550 = "0.2.0" #send message to console
 
-[dependencies.lazy_static]
+[dependencies.lazy_static] # a way to use static (called once when use)
 version = "1.0"
 features = ["spin_no_std"]
+
+[package.metadata.bootimage] #a way to exit qemu with no error
+test-args = [
+    "-device", "isa-debug-exit,iobase=0xf4,iosize=0x04", "-serial", "stdio",
+    "-display", "none"
+]
+test-success-exit-code = 33
+test-timeout = 30          # (in seconds)
+
+[[test]]
+name = "should_panic"
+harness = false
