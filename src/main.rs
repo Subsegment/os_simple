@@ -13,9 +13,6 @@ pub extern "C" fn _start() -> ! {
 
     os_simple::init(); // new
 
-    // invoke a breakpoint exception
-    x86_64::instructions::interrupts::int3(); // new
-
     // as before
     #[cfg(test)]
     test_main();
