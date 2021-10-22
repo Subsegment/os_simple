@@ -17,7 +17,6 @@ lazy_static! {
                 .set_handler_fn(test_double_fault_handler)
                 .set_stack_index(os_simple::gdt::DOUBLE_FAULT_IST_INDEX);
         }
-
         idt
     };
 }

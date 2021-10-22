@@ -18,7 +18,7 @@ pub extern "C" fn _start() -> ! {
     test_main();
 
     println!("It did not crash!");
-    loop {}
+    os_simple::hlt_loop();
 }
 
 
@@ -29,7 +29,7 @@ pub extern "C" fn _start() -> ! {
 #[panic_handler]
 fn panic(info: &PanicInfo) -> ! {
     println!("{}", info);
-    loop {}
+    os_simple::hlt_loop();
 }
 
 ///panic handler in test mode
