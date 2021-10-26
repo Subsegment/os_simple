@@ -22,6 +22,7 @@ x86_64 = "0.14.2" #exit qemu
 uart_16550 = "0.2.0" #send message to console
 pic8259 = "0.10.1" #hardware interrupts
 pc-keyboard = "0.5.0" #keyboard
+linked_list_allocator = "0.9.0" #heap
 
 [dependencies.lazy_static] # a way to use static (called once when use)
 version = "1.0"
@@ -42,3 +43,4 @@ harness = false
 [[test]]
 name = "stack_overflow"
 harness = false
+
